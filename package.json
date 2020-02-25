@@ -1,0 +1,11 @@
+{
+  "name": "module01",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rocketseat-course/module01.git",
+  "author": "Vinicius Serpa <vinicius.serpa@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
