@@ -16,6 +16,11 @@ server.get('/test', (req, res) => {
 
 server.get('/users/:index', (req, res) => {
     const { index } = req.params;
+
+    if (users[index] === undefined) {
+        return res.status(404).json({ message: "User not foud" });
+    }
+
     return res.json(users[index]);
 });
 
