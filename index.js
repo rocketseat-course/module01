@@ -26,9 +26,14 @@ function checkUserExists(req, res, next) {
 }
 
 function checkUserInArray(req, res, next) {
-    if (!users[req.params.index]) {
+
+    const user = users[req.params.index];
+
+    if (!user) {
         return res.status(404).json({ error: `User with index ${req.params.index} not found` });
     }
+
+    req.user = user;
 
     return next();
 }
@@ -44,8 +49,7 @@ server.get('/users', (req, res) => {
 })
 
 server.get('/users/:index', checkUserInArray, (req, res) => {
-    const { index } = req.params;
-    return res.json(users[index]);
+    return res.json(req.user);
 });
 
 server.post('/users', checkUserExists, (req, res) => {
