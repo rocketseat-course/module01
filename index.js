@@ -9,6 +9,14 @@ server.use(express.json());
 
 const users = ['Carlos', 'Vinicius', 'Serpa', 'Mestre'];
 
+// Global middleware (or interceptor)
+server.use((req, res, next) => {
+    console.time('Request');
+    console.log(`Request application method ${req.method} ${req.url} `);
+    next(); // call next middleware
+    console.timeEnd('Request');
+});
+
 server.get('/test', (req, res) => {
     // return res.send('Hello World!');
     const name = req.query.name === undefined ? "World" : req.query.name;
