@@ -35,4 +35,17 @@ server.post('/users', (req, res) => {
     return res.status(201).json(users);
 });
 
+server.put('/users/:index', (req, res) => {
+    const { index } = req.params;
+    const { name } = req.body;
+    users[index] = name;
+    return res.json(users);
+});
+
+server.delete('/users/:index', (req, res) => {
+    const { index } = req.params;
+    users.splice(index, 1);
+    return res.status(204).json();
+});
+
 server.listen(3000);
