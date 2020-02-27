@@ -14,6 +14,10 @@ server.get('/test', (req, res) => {
     return res.json({ message: `Hello ${name}` });
 });
 
+server.get('/users', (req, res) => {
+    res.json(users);
+})
+
 server.get('/users/:index', (req, res) => {
     const { index } = req.params;
 
